@@ -32,4 +32,40 @@
     NSLog(@"%@", button.accessibilityHint);
 }
 
+- (IBAction)clickDot:(id)sender
+{
+}
+
+- (IBAction)clickPlus:(id)sender
+{
+}
+
+- (IBAction)clickMinus:(id)sender
+{
+}
+
+- (IBAction)clickMultipy:(id)sender
+{
+}
+
+- (IBAction)clickDivided:(id)sender
+{
+}
+
+- (IBAction)clickEqual:(id)sender
+{
+}
+
+- (IBAction)clickClean:(id)sender
+{
+}
+
+- (IBAction)clickPlusOrMinus:(id)sender
+{
+}
+
+- (IBAction)clickPercent:(id)sender
+{
+}
+
 @end

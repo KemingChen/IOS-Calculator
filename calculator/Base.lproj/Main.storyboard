@@ -33,6 +33,9 @@
                                 <state key="normal" backgroundImage="ac">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickClean:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0GL-ul-wLs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uI4-UU-XJb">
                                 <rect key="frame" x="86" y="175" width="70" height="70"/>
@@ -40,6 +43,9 @@
                                 <state key="normal" backgroundImage="nagtive">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickPlusOrMinus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ett-W2-7Iq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gUr-FH-Wta">
                                 <rect key="frame" x="164" y="175" width="70" height="70"/>
@@ -47,13 +53,20 @@
                                 <state key="normal" backgroundImage="percent">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickPercent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L2R-Iz-Msb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jKe-kJ-Cpx">
                                 <rect key="frame" x="242" y="175" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" hint="divided"/>
                                 <state key="normal" backgroundImage="divide">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickDivided:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j7z-Ul-MtK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WIY-mv-LFc">
                                 <rect key="frame" x="8" y="253" width="70" height="70"/>
@@ -91,9 +104,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UUT-d2-hNL">
                                 <rect key="frame" x="242" y="253" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" hint="multipy"/>
                                 <state key="normal" backgroundImage="multipy">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickMultipy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aIO-EN-Bp8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XMb-Jg-SdO">
                                 <rect key="frame" x="8" y="331" width="70" height="70"/>
@@ -131,9 +148,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ORH-9b-y4z">
                                 <rect key="frame" x="242" y="331" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" hint="minus"/>
                                 <state key="normal" backgroundImage="minus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickMinus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z5L-Eo-U5w"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VyT-xF-YPX">
                                 <rect key="frame" x="86" y="409" width="70" height="70"/>
@@ -160,9 +181,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XrD-Gz-cpR">
                                 <rect key="frame" x="242" y="409" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" hint="add"/>
                                 <state key="normal" backgroundImage="add">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickPlus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OqN-K5-9aT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZhE-Bk-7q3">
                                 <rect key="frame" x="8" y="487" width="148" height="70"/>
@@ -181,6 +206,9 @@
                                 <state key="normal" backgroundImage="dot">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickDot:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Iad-7T-CKr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="B2f-qG-QC8">
                                 <rect key="frame" x="242" y="487" width="70" height="70"/>
@@ -188,6 +216,9 @@
                                 <state key="normal" backgroundImage="equal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickEqual:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tub-yD-bis"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uKe-8E-EVL">
                                 <rect key="frame" x="8" y="409" width="70" height="70"/>
@@ -206,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-769" y="15"/>
+            <point key="canvasLocation" x="-835" y="-4"/>
         </scene>
     </scenes>
     <resources>
