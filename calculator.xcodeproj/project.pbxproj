@@ -418,6 +418,7 @@
 				7FB2F4491ADCEA5E00AB07E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7FB2F44A1ADCEA5E00AB07E4 /* Build configuration list for PBXNativeTarget "calculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +427,7 @@
 				7FB2F44C1ADCEA5E00AB07E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
