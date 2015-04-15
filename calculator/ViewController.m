@@ -36,12 +36,13 @@
 {
     UIButton* button = (UIButton*)sender;
     [self.calculator appendNumber:button.accessibilityHint];
-    
     [self updateView];
 }
 
 - (IBAction)clickDot:(id)sender
 {
+    [self.calculator appendDot];
+    [self updateView];
 }
 
 - (IBAction)clickPlus:(id)sender
