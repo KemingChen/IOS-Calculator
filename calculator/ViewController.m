@@ -89,6 +89,8 @@
 
 - (IBAction)clickPercent:(id)sender
 {
+    [self.calculator pressPercent];
+    [self updateView];
 }
 
 - (void)updateView

@@ -127,7 +127,7 @@ int maxResultLength = 18;
         if (![self.sign isEqual:@""]) {
             self.result = [NSString stringWithFormat:@"-%@", self.result];
         }
-        
+
         if (![self.operation isEqual:@""]) {
             long double firstNumber = [self.equation doubleValue];
             long double secondNumber = [self.result doubleValue];
@@ -215,6 +215,18 @@ int maxResultLength = 18;
     else {
         self.sign = @"";
     }
+}
+
+- (void)pressPercent
+{
+    [self checkNeedToClean];
+    if ([[self result] isEqual:@""]) {
+        self.result = @"0";
+    }
+
+    long double result = [self.result doubleValue];
+    result /= 100.0;
+    self.result = [self doubleToFormatNumber:result];
 }
 
 - (NSString*)getEquation

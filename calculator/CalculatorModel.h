@@ -19,6 +19,7 @@
 - (void)pressDivided;
 - (void)pressEqual;
 - (void)pressSign;
+- (void)pressPercent;
 
 - (NSString*)getEquation;
 - (NSString*)getResult;
