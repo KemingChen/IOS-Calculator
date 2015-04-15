@@ -7,8 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "CalculatorModel.h"
 
 @interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel* equationLabel;
+@property (weak, nonatomic) IBOutlet UILabel* resultLabel;
+
+@property (strong, nonatomic) CalculatorModel* calculator;
 
 @end
 
@@ -17,19 +23,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.calculator = [[CalculatorModel alloc] init];
+    NSLog(@"viewDidLoad");
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)clickNumber:(id)sender
 {
     UIButton* button = (UIButton*)sender;
-    NSLog(@"%@", button.accessibilityHint);
+    [self.calculator appendNumber:button.accessibilityHint];
+    
+    [self updateView];
 }
 
 - (IBAction)clickDot:(id)sender
@@ -44,7 +52,7 @@
 {
 }
 
-- (IBAction)clickMultipy:(id)sender
+- (IBAction)clickMultiplied:(id)sender
 {
 }
 
@@ -66,6 +74,12 @@
 
 - (IBAction)clickPercent:(id)sender
 {
+}
+
+- (void)updateView
+{
+    self.equationLabel.text = [self.calculator getEquation];
+    self.resultLabel.text = [self.calculator getResult];
 }
 
 @end

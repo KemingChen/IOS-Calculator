@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F157D611ADD5F7800A48F04 /* CalculatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F157D601ADD5F7800A48F04 /* CalculatorModel.m */; };
 		7FB2F42A1ADCEA5E00AB07E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2F4291ADCEA5E00AB07E4 /* main.m */; };
 		7FB2F42D1ADCEA5E00AB07E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2F42C1ADCEA5E00AB07E4 /* AppDelegate.m */; };
 		7FB2F4301ADCEA5E00AB07E4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2F42F1ADCEA5E00AB07E4 /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F157D5F1ADD5F7800A48F04 /* CalculatorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorModel.h; path = calculator/CalculatorModel.h; sourceTree = "<group>"; };
+		7F157D601ADD5F7800A48F04 /* CalculatorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorModel.m; path = calculator/CalculatorModel.m; sourceTree = "<group>"; };
 		7FB2F4241ADCEA5E00AB07E4 /* calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FB2F4281ADCEA5E00AB07E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FB2F4291ADCEA5E00AB07E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -60,9 +63,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F157D621ADD637D00A48F04 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				7F157D5F1ADD5F7800A48F04 /* CalculatorModel.h */,
+				7F157D601ADD5F7800A48F04 /* CalculatorModel.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		7FB2F41B1ADCEA5E00AB07E4 = {
 			isa = PBXGroup;
 			children = (
+				7F157D621ADD637D00A48F04 /* model */,
 				7FB2F4261ADCEA5E00AB07E4 /* calculator */,
 				7FB2F4401ADCEA5E00AB07E4 /* calculatorTests */,
 				7FB2F4251ADCEA5E00AB07E4 /* Products */,
@@ -222,6 +235,7 @@
 				7FB2F4301ADCEA5E00AB07E4 /* ViewController.m in Sources */,
 				7FB2F42D1ADCEA5E00AB07E4 /* AppDelegate.m in Sources */,
 				7FB2F42A1ADCEA5E00AB07E4 /* main.m in Sources */,
+				7F157D611ADD5F7800A48F04 /* CalculatorModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
