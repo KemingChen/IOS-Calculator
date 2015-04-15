@@ -10,7 +10,8 @@
 
 @interface CalculatorModel ()
 
-@property (strong, nonatomic) NSString* lastNumber;
+@property (strong, nonatomic) NSString* equation;
+@property (strong, nonatomic) NSString* operation;
 @property (strong, nonatomic) NSString* result;
 
 @end
@@ -22,9 +23,7 @@ int maxResultLength = 18;
 - (id)init
 {
     self = [super init];
-    self.result = @"";
-    self.lastNumber = @"";
-
+    [self clean];
     return self;
 }
 
@@ -49,6 +48,27 @@ int maxResultLength = 18;
     return false;
 }
 
+- (NSString*)stringWithFormatNumber:(NSString*)string
+{
+    if (![self isContainDot:string]) {
+        return string;
+    }
+
+    int index = (int)[string length] - 1;
+    while (index >= 0) {
+        if ([string characterAtIndex:index] != '0' && [string characterAtIndex:index] != '.') {
+            break;
+        }
+        if ([string characterAtIndex:index] == '.') {
+            index--;
+            break;
+        }
+        index--;
+    }
+    NSRange range = { 0, index + 1 };
+    return [string substringWithRange:range];
+}
+
 - (void)appendNumber:(NSString*)number
 {
     NSString* lastCharacter = [self getLastCharacter:self.result];
@@ -70,10 +90,56 @@ int maxResultLength = 18;
     }
 }
 
+- (void)clean
+{
+    self.equation = @"";
+    self.operation = @"";
+    self.result = @"";
+}
+
+- (void)putResultToEquation
+{
+    self.result = [self stringWithFormatNumber:self.result];
+    if (![self.result isEqual:@""]) {
+        if (![self.operation isEqual:@""]) {
+            self.equation = [self.equation stringByAppendingString:self.operation];
+            self.operation = @"";
+        }
+        self.equation = [self.equation stringByAppendingString:self.result];
+        self.result = @"";
+    }
+    else {
+        self.equation = @"0";
+    }
+}
+
+- (void)pressPlus
+{
+    [self putResultToEquation];
+    self.operation = @"+";
+}
+
+- (void)pressMinus
+{
+    [self putResultToEquation];
+    self.operation = @"-";
+}
+
+- (void)pressMultiplied
+{
+    [self putResultToEquation];
+    self.operation = @"×";
+}
+
+- (void)pressDivided
+{
+    [self putResultToEquation];
+    self.operation = @"÷";
+}
+
 - (NSString*)getEquation
 {
-    NSLog(@"test string to number %g", [self.result doubleValue]);
-    return [NSString stringWithFormat:@"%@%@%@=", self.lastNumber, @"", self.result];
+    return [NSString stringWithFormat:@"%@%@%@", self.equation, self.operation, self.result];
 }
 
 - (NSString*)getResult

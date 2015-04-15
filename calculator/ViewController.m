@@ -24,6 +24,7 @@
 {
     [super viewDidLoad];
     self.calculator = [[CalculatorModel alloc] init];
+    [self updateView];
     NSLog(@"viewDidLoad");
 }
 
@@ -47,18 +48,26 @@
 
 - (IBAction)clickPlus:(id)sender
 {
+    [self.calculator pressPlus];
+    [self updateView];
 }
 
 - (IBAction)clickMinus:(id)sender
 {
+    [self.calculator pressMinus];
+    [self updateView];
 }
 
 - (IBAction)clickMultiplied:(id)sender
 {
+    [self.calculator pressMultiplied];
+    [self updateView];
 }
 
 - (IBAction)clickDivided:(id)sender
 {
+    [self.calculator pressDivided];
+    [self updateView];
 }
 
 - (IBAction)clickEqual:(id)sender
@@ -67,6 +76,8 @@
 
 - (IBAction)clickClean:(id)sender
 {
+    [self.calculator clean];
+    [self updateView];
 }
 
 - (IBAction)clickPlusOrMinus:(id)sender

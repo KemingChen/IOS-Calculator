@@ -12,6 +12,11 @@
 
 - (void)appendNumber:(NSString*)number;
 - (void)appendDot;
+- (void)clean;
+- (void)pressPlus;
+- (void)pressMinus;
+- (void)pressMultiplied;
+- (void)pressDivided;
 
 - (NSString*)getEquation;
 - (NSString*)getResult;
