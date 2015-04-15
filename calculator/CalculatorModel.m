@@ -50,6 +50,10 @@ int maxResultLength = 18;
 
 - (NSString*)stringWithFormatNumber:(NSString*)string
 {
+    if ([string isEqual:@"nan"] || [string isEqual:@"inf"]) {
+        return @"0";
+    }
+
     if (![self isContainDot:string]) {
         return string;
     }
@@ -102,13 +106,33 @@ int maxResultLength = 18;
     self.result = [self stringWithFormatNumber:self.result];
     if (![self.result isEqual:@""]) {
         if (![self.operation isEqual:@""]) {
-            self.equation = [self.equation stringByAppendingString:self.operation];
+            long double firstNumber = [self.equation doubleValue];
+            long double secondNumber = [self.result doubleValue];
+            long double result = 0.0;
+
+            if ([self.operation isEqual:@"+"]) {
+                result = firstNumber + secondNumber;
+            }
+            if ([self.operation isEqual:@"-"]) {
+                result = firstNumber - secondNumber;
+            }
+            if ([self.operation isEqual:@"×"]) {
+                result = firstNumber * secondNumber;
+            }
+            if ([self.operation isEqual:@"÷"]) {
+                result = firstNumber / secondNumber;
+            }
+
+            self.equation = [self stringWithFormatNumber:[NSString stringWithFormat:@"%.8Lf", result]];
             self.operation = @"";
         }
-        self.equation = [self.equation stringByAppendingString:self.result];
+        else {
+            self.equation = [self.equation stringByAppendingString:self.result];
+        }
+
         self.result = @"";
     }
-    else {
+    else if ([self.operation isEqual:@""]) {
         self.equation = @"0";
     }
 }
