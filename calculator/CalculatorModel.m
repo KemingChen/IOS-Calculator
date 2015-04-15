@@ -11,6 +11,7 @@
 @interface CalculatorModel ()
 
 @property (strong, nonatomic) NSString* equation;
+@property (strong, nonatomic) NSString* sign;
 @property (strong, nonatomic) NSString* operation;
 @property (strong, nonatomic) NSString* result;
 
@@ -113,6 +114,7 @@ int maxResultLength = 18;
     self.equation = @"";
     self.operation = @"";
     self.result = @"";
+    self.sign = @"";
 }
 
 - (NSString*)calculateEquation
@@ -120,7 +122,12 @@ int maxResultLength = 18;
     NSString* equationResult = self.equation;
 
     self.result = [self stringWithFormatNumber:self.result];
+
     if (![self.result isEqual:@""]) {
+        if (![self.sign isEqual:@""]) {
+            self.result = [NSString stringWithFormat:@"-%@", self.result];
+        }
+        
         if (![self.operation isEqual:@""]) {
             long double firstNumber = [self.equation doubleValue];
             long double secondNumber = [self.result doubleValue];
@@ -129,18 +136,17 @@ int maxResultLength = 18;
             if ([self.operation isEqual:@"+"]) {
                 result = firstNumber + secondNumber;
             }
-            if ([self.operation isEqual:@"-"]) {
+            else if ([self.operation isEqual:@"-"]) {
                 result = firstNumber - secondNumber;
             }
-            if ([self.operation isEqual:@"×"]) {
+            else if ([self.operation isEqual:@"×"]) {
                 result = firstNumber * secondNumber;
             }
-            if ([self.operation isEqual:@"÷"]) {
+            else if ([self.operation isEqual:@"÷"]) {
                 result = firstNumber / secondNumber;
             }
 
             equationResult = [self doubleToFormatNumber:result];
-            self.operation = @"";
         }
         else {
             equationResult = [self.equation stringByAppendingString:self.result];
@@ -151,6 +157,9 @@ int maxResultLength = 18;
     else if ([self.operation isEqual:@""]) {
         equationResult = @"0";
     }
+
+    self.operation = @"";
+    self.sign = @"";
 
     return equationResult;
 }
@@ -193,21 +202,43 @@ int maxResultLength = 18;
     }
 }
 
+- (void)pressSign
+{
+    [self checkNeedToClean];
+    if ([[self result] isEqual:@""]) {
+        self.result = @"0";
+    }
+
+    if ([self.sign isEqual:@""]) {
+        self.sign = @"±";
+    }
+    else {
+        self.sign = @"";
+    }
+}
+
 - (NSString*)getEquation
 {
-    NSString* result = self.result;
+    NSString* result = [[NSString alloc] initWithString:self.result];
     if ([self.operation isEqual:@"="]) {
         result = @"";
+    }
+    else if ([self.sign isEqual:@"±"]) {
+        result = [NSString stringWithFormat:@"±(%@)", self.result];
     }
     return [NSString stringWithFormat:@"%@%@%@", self.equation, self.operation, result];
 }
 
 - (NSString*)getResult
 {
+    NSString* result = [[NSString alloc] initWithString:self.result];
     if ([[self result] isEqual:@""]) {
         return @"0";
     }
-    return self.result;
+    if (![self.sign isEqual:@""]) {
+        result = [NSString stringWithFormat:@"-%@", self.result];
+    }
+    return result;
 }
 
 @end

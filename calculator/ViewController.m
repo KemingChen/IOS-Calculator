@@ -25,7 +25,6 @@
     [super viewDidLoad];
     self.calculator = [[CalculatorModel alloc] init];
     [self updateView];
-    NSLog(@"viewDidLoad");
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,6 +83,8 @@
 
 - (IBAction)clickPlusOrMinus:(id)sender
 {
+    [self.calculator pressSign];
+    [self updateView];
 }
 
 - (IBAction)clickPercent:(id)sender
