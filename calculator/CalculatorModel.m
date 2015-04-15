@@ -73,8 +73,21 @@ int maxResultLength = 18;
     return [string substringWithRange:range];
 }
 
+- (NSString*)doubleToFormatNumber:(long double)number
+{
+    return [self stringWithFormatNumber:[NSString stringWithFormat:@"%.8Lf", number]];
+}
+
+- (void)checkNeedToClean
+{
+    if ([self.operation isEqual:@"="]) {
+        [self clean];
+    }
+}
+
 - (void)appendNumber:(NSString*)number
 {
+    [self checkNeedToClean];
     NSString* lastCharacter = [self getLastCharacter:self.result];
     if (lastCharacter == NULL || [self.result isEqual:@"0"]) {
         self.result = number;
@@ -86,6 +99,7 @@ int maxResultLength = 18;
 
 - (void)appendDot
 {
+    [self checkNeedToClean];
     if ([self.result isEqual:@""]) {
         self.result = @"0.";
     }
@@ -101,8 +115,10 @@ int maxResultLength = 18;
     self.result = @"";
 }
 
-- (void)putResultToEquation
+- (NSString*)calculateEquation
 {
+    NSString* equationResult = self.equation;
+
     self.result = [self stringWithFormatNumber:self.result];
     if (![self.result isEqual:@""]) {
         if (![self.operation isEqual:@""]) {
@@ -123,47 +139,67 @@ int maxResultLength = 18;
                 result = firstNumber / secondNumber;
             }
 
-            self.equation = [self stringWithFormatNumber:[NSString stringWithFormat:@"%.8Lf", result]];
+            equationResult = [self doubleToFormatNumber:result];
             self.operation = @"";
         }
         else {
-            self.equation = [self.equation stringByAppendingString:self.result];
+            equationResult = [self.equation stringByAppendingString:self.result];
         }
 
         self.result = @"";
     }
     else if ([self.operation isEqual:@""]) {
-        self.equation = @"0";
+        equationResult = @"0";
     }
+
+    return equationResult;
 }
 
 - (void)pressPlus
 {
-    [self putResultToEquation];
+    [self checkNeedToClean];
+    self.equation = [self calculateEquation];
     self.operation = @"+";
 }
 
 - (void)pressMinus
 {
-    [self putResultToEquation];
+    [self checkNeedToClean];
+    self.equation = [self calculateEquation];
     self.operation = @"-";
 }
 
 - (void)pressMultiplied
 {
-    [self putResultToEquation];
+    [self checkNeedToClean];
+    self.equation = [self calculateEquation];
     self.operation = @"×";
 }
 
 - (void)pressDivided
 {
-    [self putResultToEquation];
+    [self checkNeedToClean];
+    self.equation = [self calculateEquation];
     self.operation = @"÷";
+}
+
+- (void)pressEqual
+{
+    if (![self.operation isEqual:@"="]) {
+        NSString* tempEquation = [self getEquation];
+        self.result = [self calculateEquation];
+        self.equation = tempEquation;
+        self.operation = @"=";
+    }
 }
 
 - (NSString*)getEquation
 {
-    return [NSString stringWithFormat:@"%@%@%@", self.equation, self.operation, self.result];
+    NSString* result = self.result;
+    if ([self.operation isEqual:@"="]) {
+        result = @"";
+    }
+    return [NSString stringWithFormat:@"%@%@%@", self.equation, self.operation, result];
 }
 
 - (NSString*)getResult

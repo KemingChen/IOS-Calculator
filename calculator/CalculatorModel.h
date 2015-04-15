@@ -17,6 +17,7 @@
 - (void)pressMinus;
 - (void)pressMultiplied;
 - (void)pressDivided;
+- (void)pressEqual;
 
 - (NSString*)getEquation;
 - (NSString*)getResult;

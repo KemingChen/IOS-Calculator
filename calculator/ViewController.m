@@ -72,6 +72,8 @@
 
 - (IBAction)clickEqual:(id)sender
 {
+    [self.calculator pressEqual];
+    [self updateView];
 }
 
 - (IBAction)clickClean:(id)sender
