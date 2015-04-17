@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString* sign;
 @property (strong, nonatomic) NSString* operation;
 @property (strong, nonatomic) NSString* result;
+@property (strong, nonatomic) NSString* lastResult;
 
 @end
 
@@ -115,12 +116,17 @@ int maxResultLength = 18;
     self.operation = @"";
     self.result = @"";
     self.sign = @"";
+    self.lastResult = @"";
 }
 
 - (NSString*)calculateEquation
 {
     NSString* equationResult = self.equation;
 
+    self.lastResult = self.result;
+    if (![self.sign isEqual:@""]) {
+        self.lastResult = [NSString stringWithFormat:@"-%@", self.lastResult];
+    }
     self.result = [self stringWithFormatNumber:self.result];
 
     if (![self.result isEqual:@""]) {
@@ -197,7 +203,7 @@ int maxResultLength = 18;
     if (![self.operation isEqual:@"="]) {
         NSString* tempEquation = [self getEquation];
         self.result = [self calculateEquation];
-        self.equation = tempEquation;
+        self.equation =  [self stringWithFormatNumber:tempEquation];
         self.operation = @"=";
     }
 }
@@ -245,10 +251,15 @@ int maxResultLength = 18;
 {
     NSString* result = [[NSString alloc] initWithString:self.result];
     if ([[self result] isEqual:@""]) {
-        return @"0";
+        if (![[self lastResult] isEqual:@""]) {
+            result = self.lastResult;
+        }
+        else {
+            result = @"0";
+        }
     }
     if (![self.sign isEqual:@""]) {
-        result = [NSString stringWithFormat:@"-%@", self.result];
+        result = [NSString stringWithFormat:@"-%@", result];
     }
     return result;
 }
